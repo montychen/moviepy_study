@@ -41,7 +41,7 @@ def color_adjust():   # vfx 处理视频特效，  fx 处理音频特效
     color_adjust_video.write_videofile("output/color_adjust.mp4")
 
 def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
-    video1 = VideoFileClip("res/沙雕视频.mp4").subclip(5,20) # 宽高 1280×720
+    video1 = VideoFileClip("res/沙雕视频.mp4").subclip(5,15) # 宽高 1280×720
     video2 = VideoFileClip("res/超时空交易.mp4").subclip(10,20) # 宽高是 1920 × 1080
     video2 = video2.resize((1280, 720)) # 宽高调整成 1280×720
 
@@ -49,6 +49,7 @@ def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
     video2 = video2.crossfadein(1)   # 淡入
 
     output_video = concatenate_videoclips([video1, video2], method='compose') # 拼接视频
+
     output_video.write_videofile("output/fadeout_fadein.mp4")
 
 fadeout_fadein()
