@@ -5,7 +5,7 @@ def video_clip_add_subtitle():
     video = VideoFileClip("res/沙雕视频.mp4").subclip(5,20)
 
     # 定义中文字幕， 中文需要指定中文字体
-    txt_clip = ( TextClip("Hello world! 你好世界",fontsize=70,color='white', font="font/站酷仓耳渔阳体-W01.ttf")
+    txt_clip = ( TextClip("Hello world! 你好世界",fontsize=70,color='white', font="free_font/站酷仓耳渔阳体-W01.ttf")
                 .set_position(lambda t: ("center", 100 + t*5)) # 会动的字幕， x轴固定center， Y轴变。 t是时间
                 # .set_position('center')  # 居中、固定位置的字幕
                 .set_duration(10) )
