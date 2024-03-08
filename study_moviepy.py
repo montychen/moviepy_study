@@ -35,10 +35,13 @@ def change_or_get_audio():
     # new_video.volumex(2)
     new_video.write_videofile("output/new_audio.mp4")
 
-def color_adjust():   # vfx 处理视频特效，  fx 处理音频特效
+def color_adjust():   # vfx 处理特效，  fx 处理音频特效
     video = VideoFileClip("res/沙雕视频.mp4")
-    color_adjust_video = video.fx(vfx.colorx, 1.5)   # 视频颜色调亮
-    color_adjust_video.write_videofile("output/color_adjust.mp4")
+    bright_color_video = video.fx(vfx.colorx, 1.5)   # 视频颜色调亮
+    contrasted_color_video = video.fx(vfx.lum_contrast, 1.5)   # 提高对比度
+
+    bright_color_video.write_videofile("output/bright_color.mp4")
+    contrasted_color_video.write_videofile("output/contrasted_color.mp4")
 
 def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
     video1 = VideoFileClip("res/沙雕视频.mp4").subclip(5,15) # 宽高 1280×720
@@ -52,4 +55,11 @@ def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
 
     output_video.write_videofile("output/fadeout_fadein.mp4")
 
-fadeout_fadein()
+def mirror_x():  # 水平镜像翻转
+    video = VideoFileClip("res/沙雕视频.mp4").subclip(5,15) 
+    mirror_x_video = video.fx(vfx.mirror_x)
+    mirror_x_video.write_videofile("output/mirror_x.mp4")
+    
+mirror_x()
+    
+
