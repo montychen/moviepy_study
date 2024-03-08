@@ -60,4 +60,8 @@ def mirror_x():  # 水平镜像翻转
     mirror_x_video = video.fx(vfx.mirror_x)
     mirror_x_video.write_videofile("output/mirror_x.mp4")
 
-fadeout_fadein()
+def save_frame(): # 精准的截取视频画面（FFmepg无法做到的事）
+    video = VideoFileClip("res/超时空交易.mp4")
+    video.save_frame("output/截取第13秒的画面.png", t=13)  # t 是指定截取第几秒的画面
+
+save_frame()
