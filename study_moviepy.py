@@ -2,9 +2,9 @@ from moviepy.editor import *
 import moviepy.video.fx.all as vfx
 
 def video_clip_add_subtitle():
-    video = VideoFileClip("res/沙雕视频.mp4").subclip(5,20)
+    video = VideoFileClip("res/沙雕视频.mp4").subclip(5,20)  # 截取视频的 第5-20秒
 
-    # 定义中文字幕， 中文需要指定中文字体
+    # 中文字幕需要指定中文字体
     txt_clip = ( TextClip("Hello world! 你好世界",fontsize=70,color='white', font="free_font/站酷仓耳渔阳体-W01.ttf")
                 .set_position(lambda t: ("center", 100 + t*5)) # 会动的字幕， x轴固定center， Y轴变。 t是时间
                 # .set_position('center')  # 居中、固定位置的字幕
@@ -44,9 +44,9 @@ def color_adjust():   # vfx 处理特效，  fx 处理音频特效
     contrasted_color_video.write_videofile("output/contrasted_color.mp4")
 
 def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
-    video1 = VideoFileClip("res/沙雕视频.mp4").subclip(5,15) # 宽高 1280×720
-    video2 = VideoFileClip("res/超时空交易.mp4").subclip(10,20) # 宽高是 1920 × 1080
-    video2 = video2.resize((1280, 720)) # 宽高调整成 1280×720
+    video1 = VideoFileClip("res/沙雕视频.mp4").subclip(4,14) # 宽高 1280×720
+    video2 = VideoFileClip("res/超时空交易.mp4").subclip(12,22) # 宽高是 768*576
+    video1 = video1.resize((768, 576)) # 宽高调整成 
 
     video1 = video1.crossfadeout(1)  # 淡出
     video2 = video2.crossfadein(1)   # 淡入
@@ -56,10 +56,8 @@ def fadeout_fadein(): # 拼接的2个视频间的转场， 淡入、淡出
     output_video.write_videofile("output/fadeout_fadein.mp4")
 
 def mirror_x():  # 水平镜像翻转
-    video = VideoFileClip("res/沙雕视频.mp4").subclip(5,15) 
+    video = VideoFileClip("res/沙雕视频.mp4").subclip(5,15)
     mirror_x_video = video.fx(vfx.mirror_x)
     mirror_x_video.write_videofile("output/mirror_x.mp4")
-    
-mirror_x()
-    
 
+fadeout_fadein()
